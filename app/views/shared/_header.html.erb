@@ -1,0 +1,90 @@
+
+ <header class="header-wrapper header-wrapper--home">
+    <div class="container d-flex d-lg-block d-sm-block">
+        <!-- Logo link-->
+        <a href='<%= root_path %>' class="logo">
+            <img alt='logo' src="https://www.cgv.vn/skin/frontend/cgv/default/images/cgvlogo.png">
+        </a>
+        
+        <!-- Main website navigation-->
+        <nav id="navigation-box">
+            <!-- Toggle for mobile menu mode -->
+            <a href="#" id="navigation-toggle">
+                <span class="menu-icon">
+                    <span class="icon-toggle" role="button" aria-label="Toggle Navigation">
+                        <span class="lines"></span>
+                    </span>
+                </span>
+            </a>
+            
+            <!-- Link navigation -->
+            <ul id="navigation">
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="<%= films_path %>">Phim</a>
+                
+                </li>
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="<%= screen_index_path %>">Suất chiếu</a>
+                    
+                </li>
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="#">Thành Viên</a>
+                    
+                </li>
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="#">Ưu Đãi</a>
+                    
+                </li>
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="#">Tin Tức</a>
+                    
+                </li>
+                <li>
+                    <span class="sub-nav-toggle plus"></span>
+                    <a href="#">Liên Hệ</a>
+                        
+                </li>
+            </ul>
+        </nav>
+        
+        <!-- Additional header buttons / Auth and direct link to booking-->
+        <div class="control-panel">
+               <% if user_signed_in? %>
+                        <div class="dropdown d-inline-block">
+                                <button type="button" class="btn btn-md btn--warning btn--book btn-control--home login-window" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class=" d-xl-inline-block ml-1">
+                                    <%=  current_user.name %>
+                                 </span>
+                                   <i class="mdi mdi-chevron-down  d-xl-inline-block"></i>
+                                 </button>
+                                 <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item" href="<%= account_path(current_user) %>"><i
+                                            class="bx bx-wallet font-size-16 align-middle mr-1"></i> Hồ sơ</a>
+                        
+                                    <a class="dropdown-item d-block" href="#"><span
+                                            class="badge badge-success float-right">11</span><i
+                                            class="bx bx-wrench font-size-16 align-middle mr-1"></i> Thông báo</a>
+                                    <div class="dropdown-divider"></div>
+                                    <%= button_to  destroy_user_session_path, method: :delete,class: "dropdown-item text-danger" do%>
+                                        <i class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i>Đăng Xuất
+                                    <% end  %>
+                                </div>
+                        <% else %> 
+                            <div class="dropdown d-none d-lg-inline-block ml-1">
+                                <div class="d-flex align-items-center header-item">
+                                    <%= link_to "Sign in /", new_user_session_path %><br />
+                                    <%= link_to "Regsiter", new_user_registration_path %><br />
+                                </div>
+                            </div>
+                        <% end %>
+        </div>
+
+    </div>
+</header>  
+         
+         

@@ -1,0 +1,225 @@
+
+    <div class="col-md-12">  
+        <div class="col-md-3">      
+            <div class="portlet light profile-sidebar-portlet bordered">
+                <div class="profile-userpic">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar6.png" class="img-responsive" alt=""> </div>
+                <div class="profile-usertitle">
+                    <div class="profile-usertitle-name"> <%= @user.name %> </div>
+                    <div > <%= @user.email %> </div>
+                </div>
+            
+                <div class="profile-usermenu">
+                    <nav>
+                        <div class="nav d-block nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link active m-0" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Thông tin chung</a>
+                            <a class="nav-item nav-link m-0" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Chi tiết tài khoản</a>
+                            <a class="nav-item nav-link m-0" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Lịch sử giao dịch</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9"> 
+            <div class="portlet light bordered">
+                <div class="portlet-title tabbable-line d-flex align-items-center ">
+                    <div class="caption caption-md w-25">
+                        <i class="icon-globe theme-font hide"></i>
+                        <span class="caption-subject font-blue-madison bold uppercase">CGV Account</span>
+                    </div>
+                    <div class="flex-lg-grow-1 text-center">
+                        <% flash.each do |type, msg| %>
+                            <div class="alert alert-info">
+                            <%= msg %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div>
+                        <!-- Tab panes -->
+                        <div class="tab-content" id="nav-tabContent">
+                            <div role="tabpanel" class="tab-pane active" id="nav-home">
+                                 <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Họ và Tên</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p> <%= @user.name %> </p>
+                                        </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= @user.email %> </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Ngày sinh</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= @user.birthday %> </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Giới tính</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= @user.gender %> </p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Điện thoại</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p> <%= @user.phone %> </p>
+                                            </div>
+                                        </div>
+                            </div>
+                            
+                            <div role="tabpanel" class="tab-pane" id="nav-profile" aria-labelledby="nav-profile-tab">
+
+                                          <%= form_for [@account], html: {class: "outer-repeater py-5", remote: true} do |f| %>
+                                            <div class="outer">
+                                                        <div class="outer">
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Tên tài khoản</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :name, placeholder: 'Tên danh mục ...' ,class: 'form-control disabled'  %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Ngày tạo tài khoản</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :created_at, placeholder: 'Ngày tạo tài khoản ...' ,class: 'form-control  bg-light',disabled: "disabled"  %>
+                                                                </div>
+                                                            </div>
+
+                                                        
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Email</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :email, placeholder: 'Email...' ,class: 'form-control bg-light ',disabled: "disabled"  %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Chứng minh nhân dân</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :identificate, placeholder: 'Số chứng minh/căn cước...' ,class: 'form-control' %>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Điện thoại</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :phone, placeholder: 'Địa chỉ ...' ,class: 'form-control '  %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Giới tính</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :gender, placeholder: 'Giới tính ...' ,class: 'form-control '  %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Ngày sinh</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.date_field :birthday, :value => @user.birthday, placeholder: 'Ngày sinh ...' ,class: 'form-control' %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Thành phố</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :city, placeholder: 'Thành phố ...', class: 'form-control' %>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row mb-4">
+                                                                <label for="taskname" class="col-form-label col-lg-2">Địa chỉ</label>
+                                                                <div class="col-lg-10">
+                                                                    <%= f.text_field :address, placeholder: 'Địa chỉ...', class: 'form-control' %>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row justify-content-end">
+                                                                <div class="col-lg-10">
+                                                                    <button type="submit" class="btn btn-primary new-post">Cập nhật</button>
+                                                                     <%= link_to "Hủy", account_path , class: "btn btn-secondary" %> 
+                                                                </div>
+                                                    </div>     
+                                        <% end %>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="nav-contact" aria-labelledby="nav-contact-tab">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                            <thead >
+                                                <tr>
+                                                    <th scope="col" style="width: 136px;">Tên phim</th>
+                                                    <th scope="col">Ngày chiếu</th>
+                                                    
+                                                    <th scope="col">Đồ ăn </th>
+                                                   
+                                                    <th scope="col">Thời gian order</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Thao tác</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% @user.orders.includes(:seat_orders, :foodorders).each do |order| %>
+                                                     <% if order.seat_orders.present? %>
+                                                    
+                                                        <tr class="order-detail">
+                                                            <td scope="row"><%= order.seat_orders.last.screening.film.name %></td>
+                                                            <td ><%= order.seat_orders.last.screening.start_film_at.strftime("%d/%m/%Y") %></td>
+                                                        
+                                                            <td >
+                                                                
+                                                                    <% order.foodorders.each do |foodorder| %>
+                                                                    <p class="mb-0"><%= foodorder.food.name %>  x<%= foodorder.quantity %>  </p>
+                                                                <% end %>
+                                                            
+                                                            </td>
+                                                            
+                                                            <td ><%= order.created_at.in_time_zone("Asia/Ho_Chi_Minh").strftime("%H:%M %d/%m/%Y") %></td>
+                                                            <td><%= (check_film_sent(order.seat_orders.last.screening.start_film_at) == true) ? "Đã xem" : "Chưa xem"%></td>
+                                                            <td class="action-order">                                                       
+                                                                <% if !check_film_sent(order.seat_orders.last.screening.start_film_at) %>
+                                                                    <a type="button" data-order-id-del = "<%= order.id %>" class="btn btn-warning cancel-order">Hủy đặt vé</a> 
+                                                                    <a type="button" href="<%= order_path(order) %>" class="btn btn-success ticket_detail_view">Xem vé</a> 
+                                                                <% end %>
+                                                            </td>
+                                                        </tr>
+                                                        <del>
+                                                      <% else %>
+                                                      <tr>
+                                                            <td scope="row" class="order_name-deleted"></td>
+                                                            <td class="order_start_film_at-deleted"></td>
+                                                        
+                                                            <td > 
+                                                            </td>
+                                                            
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td>                                                       
+                                                                <a type="button" class="btn btn-secondary disabled">Bạn đã hủy đơn hàng này</a>
+                                                            </td>
+                                                          
+                                                      </tr>
+                                                        <% end %>
+                                                <% end %>
+                                            </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

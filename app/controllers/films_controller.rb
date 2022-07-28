@@ -1,8 +1,7 @@
 class FilmsController < ApplicationController
     layout "app"
     def index
-        @search = Film.friendly.find(params[:q])
-        @films = @search.result
+        @films = Film.all
         respond_to do |format|
             format.html # index.html.erb
         end

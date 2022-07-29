@@ -1,5 +1,5 @@
 class ScreenController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:show, :payment]
     layout "app"
     def index
         @films = Film.all

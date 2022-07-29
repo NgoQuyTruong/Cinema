@@ -30,11 +30,13 @@
 <body>
     <div class="wrapper">
          <%= render partial: "shared/header" %>
+         <%= render partial: "shared/topnav" %>
         <!-- Main content -->
          <%= yield %>
 	
     <!--load animate -->
     <%= render partial: "/shared/load_animate" %>
+     <%= render partial: "/shared/footer" %>
     </div>
     <!-- JavaScript-->
         <script src = "https://code.jquery.com/jquery-3.6.0.js" Liem = "sha256-H + K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk =" crossorigin = "hidden"> </script>

@@ -1,26 +1,42 @@
-<%= render partial: "shared/topnav" %>
 <!-- Main content -->
 <section class="container">
    <div class="col-sm-12">
-        <h2 class="p-0 page-heading"><i class="fas fa-video"></i> Phim HOT</h2>
-        <div class="select-area py-3 d-flex justify-content-end">
-                            <div class=" px-2" style="width:200px;">
-                                <i class="fas fa-sort-alpha-up"></i>
-                                 <%= sort_link(@search, :name, 'Tên Phim') %>  
-                                   
-                            </div>
-                             <div class=" px-2" style="width:200px;">
-                                <i class="fas fa-sort-amount-up-alt"></i>
-                                 <%= sort_link(@search, :release_date, 'Ngày công chiếu') %>  
-                                   
-                            </div>                   
-         </div>
+        <h2 class="p-0 page-heading"><i class="fas fa-video"></i> Phim Đang Chiếu</h2>
+        
          <div class="row">
             
                 <% @films.each do |film | %>
-                     <div class="col-sm-4 col-md-3">
+                     <div class="col-xl-3 col-md-4 col-sm-6">
                             <div class="gallery-item">
-                                <a href='<%= film.trailer_link %>' class="trailer-sample gallery-item__image gallery-item--photo">
+                                <a href='<%= film.trailer_link %>' class="trailer-sample gallery-item__image gallery-item--photo text-center">
+                                    <img src="<%= film.image_url %>" style = "height:350px;width:400px">
+                                </a>
+                                <div  style="height:40px"> <strong class="text-center w-100"><%= film.name %></strong></div>
+                                <p class="mb-0"><strong>Thời lượng: </strong><%= film.time %> Phút</p>
+                                <p><strong>Khởi chiếu: </strong><%= film.release_date.to_date.strftime("%d/%m/%Y") %> </p>
+                                <div>
+                                    <a href='<%= film_path(film) %>' class=" gallery-item__descript gallery-item--photo-link">
+                                        <span class="gallery-item__icon"><i class="fa fa-camera"></i></span>
+                                        <p class="gallery-item__name">Đặt vé ngay !</p>
+                                    </a>
+                                </div>
+                            </div>
+                      </div>
+                <% end %>
+              
+    
+        </div>
+    </div>
+</section>
+<section class="container">
+   <div class="col-sm-12">
+        <h2 class="p-0 page-heading"><i class="fas fa-video"></i> Phim Sắp Chiếu</h2>
+         <div class="row">
+            
+                <% @films.each do |film | %>
+                     <div class="col-xl-3 col-md-4 col-sm-6">
+                            <div class="gallery-item">
+                                <a href='<%= film.trailer_link %>' class="trailer-sample gallery-item__image gallery-item--photo text-center">
                                     <img src="<%= film.image_url %>" style = "height:350px;width:400px">
                                 </a>
                                 <div  style="height:40px"> <strong class="text-center w-100"><%= film.name %></strong></div>
@@ -42,7 +58,7 @@
 </section>
 <section class="container py-3">
         <h2 class="pl-0 page-heading"><i class="fas fa-gift mr-3"></i>Khuyến mãi hôm nay !</h2>
-                <div class="row">
+                <div class="row justify-content-around">
                     
                         <div class="col-sm-4 col-md-3">
                                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/n/9/n95_240x201_1.jpg">
@@ -50,10 +66,10 @@
                         <div class="col-sm-4 col-md-3">
                                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/h/a/happy-new-year-240x201_1.png">
                         </div>
-                        <div class="col-sm-4 col-md-3">
+                        <div class="col-sm-4 col-md-3 d-sm-none">
                                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/d/o/doreamon_web_app_240x201.jpg">
                         </div>
-                        <div class="col-sm-4 col-md-3">
+                        <div class="col-sm-4 col-md-3 d-lg-block d-md-none d-sm-none">
                                <img src="https://www.cgv.vn/media/banner/cache/1/b58515f018eb873dafa430b6f9ae0c1e/c/g/cgv-crm-team-chi-1-duoc-2-240x201_1.jpg">
                         </div>
                 </div>

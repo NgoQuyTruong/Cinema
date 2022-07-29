@@ -17,20 +17,32 @@ body{
     margin-left: 30px;
     margin-right: 40px;
 }
+.left-content {
+  text-align: center;
+  background-image: url(https://www.instagram.com/static/images/homepage/phones/home-phones.png/1dc085cdb87d.png);
+  background-size: 468.32px 634.15px;
+  height: 581.15px;
+  margin-bottom: 12px;
+  margin-right: 32px;
+
+}
+.left-content-imgs {
+  margin: 27px 0 0 113px;
+  position: relative;
+}
+
+.left-content-img {
+  height: 538.84px;
+  left: 46px;
+  position: absolute;
+  top: 0;
+  width: 250px;
+}
 .container_resgiter{
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.container_resgiter::after{
-    content: '';
-    background: gray;
-    width: 1px;
-    height: 100%;
-    display: block;
-    position: absolute;
-    
 }
 .right-content > h1{
     font-weight: 500;
@@ -73,7 +85,7 @@ input[type=text]:focus,input[type=password]:focus {
 
 .btn-submit{
     width: 95%;
-    background: #ec7211;
+    background: rgba(var(--d69,0,149,246),.3);
     color: #fff;
     border-radius: 3px;
     outline: none;
@@ -83,7 +95,12 @@ input[type=text]:focus,input[type=password]:focus {
     padding: 10px 0px;
 }
 .btn-submit:hover{
-    background: #eb5f07;
+    background: #0095f6;
+}
+a.sign-up-link {
+  font-size: 15px;
+  color: #0095f6;
+  font-weight: 700;
 }
 a.haved-account{
     color: #0073bb;

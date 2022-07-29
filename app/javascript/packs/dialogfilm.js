@@ -1,4 +1,5 @@
 console.log("dialog film");
+let test;
 class DialogScreen {
     // hàm tạo -> truyền vào 1 selecter[class hoặc id]
     constructor(selector = ".time-select__item"){
@@ -18,8 +19,7 @@ class DialogScreen {
         let self = this;
         //console.log(self)
         // bind sự kiện khi người dùng hover vào 1 suất chiếu
-        $(document).on("mouseenter", self.selector, function(){
-            
+        $(document).on("mouseenter", self.selector, function(e){
             $(this).css("color","blue")
             let current_screen_id = $(this).data().screen
             let current_url = $(this).attr("data-url")
@@ -28,6 +28,7 @@ class DialogScreen {
             self.processPopup(this)
             // xử lý sự kiện hover với mỗi id truyền vào
             self.hoverEvent(current_screen_id, current_url)
+            
         })
 
         $('body').mousemove(function(e){
@@ -40,7 +41,6 @@ class DialogScreen {
     }
     processPopup(taget_hover){
         //taget_hover thằng đang được hover
-        console.log($(this));
         //hàm này kiểm tra xem popup đã được tạo hay chưa? nếu chưa có thì create
         !this.flag_create_popup && this.createPopup()
         //nếu có rồi thì show
@@ -55,7 +55,7 @@ class DialogScreen {
             // kiểm tra nếu chưa có cache_data của id này thì gửi rq lên sever
             //-> lấy data về và gán vào caceh
             //hiển thị load animation
-            this.popup.html(this.tenmplateLoading());
+            //this.popup.html(this.tenmplateLoading());
             // thực hiện 1 request đến sever lấy thông tin của screen về gán và cachedata
 
             data = await this.getData(target_id, current_url);
@@ -63,7 +63,6 @@ class DialogScreen {
         }else{
             data = this.cache_data[target_id]
         }
-        console.log(data)
         // xử lý khi có data screen
         this.processData(data)
     }
@@ -85,12 +84,10 @@ class DialogScreen {
         let offset = $(taget_hover).offset();
         let offset_viewport_top = $(taget_hover).offset().top - $(window).scrollTop();
         if(window_height/2 > offset_viewport_top){
-            console.log("hiện ở dưới");
             this.popup.css('top', offset.top + $(taget_hover).innerHeight()+10)
             this.popup.addClass('on-bottom');
         }else{
             //  hien o tren
-            console.log("hiện ở trên");
             this.popup.css('top', offset.top);
             this.popup.addClass('on-top');
         }
@@ -112,6 +109,7 @@ class DialogScreen {
     templateScreeningPopup(data){
         let screen_data = data.screen_data
         let screen_part = data.screen_part
+        test = screen_data
         console.log(screen_data);
         return(`
                 <div >
@@ -155,6 +153,5 @@ class DialogScreen {
 }
 
 $(function () {
-
-    new DialogScreen().init();
+   // new DialogScreen().init();
   })

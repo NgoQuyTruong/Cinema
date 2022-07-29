@@ -4411,9 +4411,7 @@ ul#navigation li.mega-menu__coloum {
 ul#navigation li.mega-menu__coloum--outheading {
   padding-top: 44px;
 }
-ul#navigation > li {
-  padding-bottom: 21px;
-}
+
 ul#navigation > li > ul.mega-menu {
   width: 1140px;
   left: -792px;
